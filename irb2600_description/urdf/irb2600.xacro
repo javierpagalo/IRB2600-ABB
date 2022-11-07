@@ -5,6 +5,12 @@
   <xacro:macro name="abb_irb2600" params="prefix">
     <!-- links -->
     <link name="${prefix}base_link">
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="92.5052"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -20,6 +26,12 @@
       </collision>
     </link>
     <link name="${prefix}link_1">
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="69.3794"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+      
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -35,6 +47,13 @@
       </collision>
     </link>
     <link name="${prefix}link_2">
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="35.0020"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+      
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -50,6 +69,13 @@
       </collision>
     </link>
     <link name="${prefix}link_3">
+
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="68.5583"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -65,6 +91,13 @@
       </collision>
     </link>
     <link name="${prefix}link_4">
+      
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="18.0455"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+      
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -80,6 +113,12 @@
       </collision>
     </link>
     <link name="${prefix}link_5">
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="1.0738"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+      
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -95,6 +134,12 @@
       </collision>
     </link>
     <link name="${prefix}link_6">
+      <inertial>
+        <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+        <mass value="0.1418"/>
+        <inertia ixx="1.0" ixy="1.0" ixz="1.0" iyy="1.0" iyz="1.0" izz="1.0"/>
+      </inertial>
+      
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
@@ -179,5 +224,6 @@
       <parent link="${prefix}flange" />
       <child link="${prefix}tool0" />
     </joint>
+
   </xacro:macro>
 </robot>
