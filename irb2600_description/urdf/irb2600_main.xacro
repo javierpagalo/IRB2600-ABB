@@ -2,9 +2,10 @@
 <robot name="abb_irb2600_model" xmlns:xacro="http://ros.org/wiki/xacro">
 
   <xacro:include filename="$(find irb2600_description)/urdf/irb2600.xacro"/>
-  <xacro:include filename="$(find irb2600_description)/urdf/gazebo.xacro"/>
 
   <xacro:abb_irb2600 prefix=""/>
+  
+  <xacro:include filename="$(find irb2600_description)/urdf/gazebo.xacro"/>
 
   <link name="world"/>
   
