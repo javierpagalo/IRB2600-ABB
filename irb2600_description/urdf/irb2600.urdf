@@ -297,27 +297,27 @@
   <!-- end of transmission list -->
   <!-- Gazebo-specific link properties -->
   <gazebo reference="base_link">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_1">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_2">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_3">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_4">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_5">
-    <material>Gazebo/Orange</material>
+    <material>Gazebo/White</material>
     <turnGravityOff>true</turnGravityOff>
   </gazebo>
   <gazebo reference="link_6">
