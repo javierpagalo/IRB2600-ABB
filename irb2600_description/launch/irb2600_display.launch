@@ -5,14 +5,14 @@
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />
 
-	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb120_description)/urdf/irb120_main.xacro 
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb2600_description)/urdf/irb2600_main.xacro 
 			table:=$(arg table) 
 			camera:=$(arg camera)
 			gripper_2f:=$(arg gripper_2f)
 			gripper_3f:=$(arg gripper_3f)"/>
 	
 	<node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
-	<node name="robot_state_publisher" pkg="robot_state_publisher" type="state_publisher"/>
-	<node name="rviz" pkg="rviz" type="rviz" args="-d $(find irb120_description)/rviz_config/default.rviz"/>
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+	<node name="rviz_gui" pkg="rviz" type="rviz" output="screen"/>
 	
 </launch>
