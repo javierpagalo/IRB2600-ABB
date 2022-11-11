@@ -4,9 +4,9 @@
   <arg name="gazebo_gui" default="true"/>
 
   <!-- remap topics to conform to ROS-I specifications -->
-    <remap from="/irb120_trajectory_controller/follow_joint_trajectory" to="/joint_trajectory_action" />
-    <remap from="/irb120_trajectory_controller/state" to="/feedback_states" />
-    <remap from="/irb120_trajectory_controller/command" to="/joint_path_command"/>
+    <remap from="/irb2600_trajectory_controller/follow_joint_trajectory" to="/joint_trajectory_action" />
+    <remap from="/irb2600_trajectory_controller/state" to="/feedback_states" />
+    <remap from="/irb2600_trajectory_controller/command" to="/joint_path_command"/>
 
   <!-- startup simulated world -->
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
@@ -16,13 +16,13 @@
   </include>
 
   <!-- urdf xml robot description loaded on the Parameter Server, converting the xacro into a proper urdf file-->
-  <include file="$(find irb120_gazebo)/launch/irb120_load_config.launch" >
+  <include file="$(find irb2600_gazebo)/launch/irb2600_load_config.launch" >
     <arg name="gazebo" value="$(arg gazebo)"/>
     <arg name="gripper_2f" value="false"/>
   </include>
 
   <!-- push robot_description to factory and spawn robot in gazebo -->
-  <node name="abb_irb120_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model abb_irb120" />
+  <node name="abb_irb2600_spawn" pkg="gazebo_ros" type="spawn_model" output="screen" args="-urdf -param robot_description -model abb_irb2600" />
 
     <!-- convert joint states to TF transforms for rviz, etc -->
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
@@ -30,6 +30,6 @@
   </node>
 
   <!-- init and start Gazebo ros_control interface -->
-  <include file="$(find irb120_gazebo)/launch/irb120_control.launch"/>
+  <include file="$(find irb2600_gazebo)/launch/irb2600_control.launch"/>
 
 </launch>

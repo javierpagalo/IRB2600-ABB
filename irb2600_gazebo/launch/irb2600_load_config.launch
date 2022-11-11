@@ -6,7 +6,7 @@
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />
 
-	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb120_description)/urdf/irb120_main.xacro 
+	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb2600_description)/urdf/irb2600_main.xacro 
 			gazebo:=$(arg gazebo)
             table:=$(arg table) 
 			camera:=$(arg camera)
