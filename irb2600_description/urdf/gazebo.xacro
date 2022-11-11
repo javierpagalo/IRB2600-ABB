@@ -2,9 +2,9 @@
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
 
 <xacro:macro name="abb_irb2600_gazebo" params="prefix">
+<!-- get base ABB IRB2600 model -->
 
-  <!-- get base ABB IRB2600 model -->
-  <xacro:abb_irb2600_12_165 prefix="${prefix}" />
+  <!-- <xacro:abb_irb2600_12_165 prefix="${prefix}" />-->
 
   <!-- transmission list -->
   <transmission name="${prefix}tran1">
