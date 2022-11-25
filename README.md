@@ -88,6 +88,6 @@ Setup the Robot and turn on.
 3. To command the robot from the command prompt, send the joint configuration
 
    ```
-   rostun irb2600_master real_irb2600_jtc.launch
+   rostun irb2600_master real_irb2600_jtc.launch 0 0 0 0 0 0 
    ```
 
