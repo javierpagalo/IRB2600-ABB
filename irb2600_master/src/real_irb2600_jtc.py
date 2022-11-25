@@ -28,8 +28,6 @@ def perform_trajectory():
 
     rospy.sleep(1)
 
-
-
     trajectory_msg = JointTrajectory() #JointTrajectory object declaration
 
     trajectory_msg.joint_names = abb_joints

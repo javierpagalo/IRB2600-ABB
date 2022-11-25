@@ -24,7 +24,7 @@
     <!-- <node pkg="irb120_master" type="real_robot_gripper.py" name="ABB_Robotiq_states" output="screen"/> -->
     
 
-    <!-- Diferent configuration of the robot and grippers in MoveIT -->
+    <!-- Diferent configuration of the robot and grippers in MoveiT -->
     
     <include if="$(arg robot)" file="$(find irb2600_description)/launch/real_irb2600_moveit.launch" />
 
