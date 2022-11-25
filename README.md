@@ -88,6 +88,6 @@ Setup the Robot and turn on.
 3. To command the robot from the command prompt, send the joint configuration
 
    ```
-   rosrun irb2600_master real_irb2600_jtc.launch 0 0 0 0 0 0 
+   rosrun irb2600_master real_irb2600_jtc.py 0 0 0 0 0 0 
    ```
 
