@@ -29,7 +29,7 @@ The following packages are also neccesary but you must install it by cloning fro
 * ros-melodic-abb
 * ros-kinetic-abb-driver
 
-Now,Extract the metapackage `IRB2600-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
+Now, Extract the metapackage `IRB2600-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
 
 **WARNING: If you planing use grippers with this robot. You need copy the gripper package https://github.com/fryumbla/Robotiq-grippers.git (In construction)**
 
@@ -72,13 +72,13 @@ Open terminal and `roscore` and `Enter`.
 
 ### 3.2. Real Robot
 
-The real robot work with the moveit_configuration package for precaution collision in our workspace or environment
+The real robot work with the moveit_configuration package for precaution collision in our workspace or environment (In construction)
 
 Setup the Robot and turn on. 
 
 1. Launch the robot
    ```
-   roslaunch irb2600_description real_robot.launch robot:=true
+   roslaunch irb2600_description real_robot.launch
    ```
 
 2. If you requires to launch the Gazebo empty world
@@ -88,6 +88,6 @@ Setup the Robot and turn on.
 3. To command the robot from the command prompt, send the joint configuration
 
    ```
-   rostun irb2600_master real_irb2600_jtc.launch 0 0 0 0 0 0 
+   rosrun irb2600_master real_irb2600_jtc.py 0 0 0 0 0 0 
    ```
 
