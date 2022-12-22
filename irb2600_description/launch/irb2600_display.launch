@@ -4,10 +4,12 @@
 	<arg name="gripper_2f" default="false" />
 	<arg name="gripper_3f" default="false" />
 	<arg name="camera" default="false" />
+	<arg name="camera_arm" default="false" />
 
 	<param name="robot_description" command="$(find xacro)/xacro --inorder $(find irb2600_description)/urdf/irb2600_main.xacro 
 			table:=$(arg table) 
 			camera:=$(arg camera)
+			camera_arm:=$(arg camera_arm)
 			gripper_2f:=$(arg gripper_2f)
 			gripper_3f:=$(arg gripper_3f)"/>
 	
