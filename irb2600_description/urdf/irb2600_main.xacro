@@ -5,6 +5,8 @@
   <xacro:arg name="table" default="false"/>
   <xacro:arg name="gripper_2f" default="false"/>
   <xacro:arg name="camera_arm" default="false"/>
+  <xacro:arg name="robot_base" default="false"/>
+
 
   <xacro:include filename="$(find irb2600_description)/urdf/irb2600_macro.xacro"/>
   <xacro:include filename="$(find irb2600_description)/urdf/gazebo.xacro"/>
@@ -13,18 +15,23 @@
   
 
   <link name="world"/>
-  <!-- Fix robot to Gazebo world -->
+  <!-- Fix robot to Gazebo world 
   <joint name="fixed" type="fixed">
       <parent link="world"/>
       <child link="base_link"/>
       <origin rpy="0 0 0" xyz="0 0 0"/>
-  </joint> 
+  </joint> -->
 
   <xacro:abb_irb2600_gazebo prefix=""/>
 
   <!-- table -->
   <xacro:if value="$(arg table)">
     <xacro:include filename="$(find irb2600_description)/urdf/table.xacro"/>
+  </xacro:if>
+
+  <!-- robot lab base -->
+  <xacro:if value="$(arg robot_base)">
+    <xacro:include filename="$(find irb2600_description)/urdf/robot_base.xacro"/>
   </xacro:if>
 
   <!-- camera -->
