@@ -1,25 +1,25 @@
 <?xml version="1.0" ?>
 <robot name="table" xmlns:xacro="http://ros.org/wiki/xacro">
 
-	<material name="coral">
+	<material name="coral3">
 		<color rgba="${255/255} ${127/255} ${80/255} 1.0"/>
 	</material>
 	
 	<!-- HERE you can change the position of the robot in the table -->
 	<link name="table">
 		<visual>
-			<origin rpy="0 0 0" xyz="0.2 0 0.5"/>
+			<origin rpy="0 0 0" xyz="0 2.0 0.405"/>
 			<geometry>
-			<box size="0.8 1.6 1.01"/>
+			<box size="1.5 0.7 0.81"/>
 			</geometry>
-			<material name="coral"/>
+			<material name="coral3"/>
 		</visual>
 		<collision>
 			<origin rpy="0 0 0" xyz="0.2 0 -0.005"/>
 			<geometry>
 			<box size="0.8 1.6 0.01"/>
 			</geometry>
-			<material name="coral"/>
+			<material name="coral3"/>
 		</collision>
 		<inertial>
 			<origin rpy="0 0 0" xyz="0.0 0.0 0.0"/>
@@ -31,13 +31,7 @@
 	<joint name="table" type="fixed">
 		<parent link="world"/>
 		<child link="table"/>
-		<origin xyz="0 0 0" rpy="0 0 0"/>
-	</joint>
-
-	<joint name="table_base" type="fixed">
-		<parent link="table"/>
-		<child link="base_link"/>
-		<origin xyz="0 0 1.01" rpy="0 0 0"/>
+		<origin xyz="0 0 0" rpy="0 0 -1.57"/>
 	</joint>
 
 </robot>
