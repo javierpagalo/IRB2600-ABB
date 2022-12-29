@@ -15,9 +15,9 @@
 			<material name="coral3"/>
 		</visual>
 		<collision>
-			<origin rpy="0 0 0" xyz="0.2 0 -0.005"/>
+			<origin rpy="0 0 0" xyz="0 2.0 0.405"/>
 			<geometry>
-			<box size="0.8 1.6 0.01"/>
+			<box size="1.5 0.7 0.81"/>
 			</geometry>
 			<material name="coral3"/>
 		</collision>
@@ -28,10 +28,15 @@
 		</inertial>
   	</link>	
 
-	<joint name="table" type="fixed">
+	<joint name="table_j" type="fixed">
 		<parent link="world"/>
 		<child link="table"/>
 		<origin xyz="0 0 0" rpy="0 0 -1.57"/>
 	</joint>
+
+	<gazebo reference="table">
+    <material>Gazebo/Wood</material>
+  	</gazebo>
+	
 
 </robot>

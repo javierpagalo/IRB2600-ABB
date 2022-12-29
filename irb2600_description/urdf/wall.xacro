@@ -93,4 +93,8 @@
 		<origin xyz="0 0 0" rpy="0 0 -1.57"/>
 	</joint>
 
+	<gazebo reference="wall_left">
+    <material>Gazebo/GreyTransparent</material>
+  	</gazebo>
+
 </robot>
