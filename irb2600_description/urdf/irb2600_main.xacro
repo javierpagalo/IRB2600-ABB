@@ -3,12 +3,11 @@
 
   <xacro:arg name="camera" default="false"/>
   <xacro:arg name="table" default="false"/>
-  <xacro:arg name="gripper_2f" default="false"/>
   <xacro:arg name="camera_arm" default="false"/>
   <xacro:arg name="robot_base" default="false"/>
   <xacro:arg name="vacuum_end" default="false"/>
   <xacro:arg name="base_vacuum_end" default="false"/>
-  <xacro:arg name="base_vacuum_end_wall" default="true"/>
+  <xacro:arg name="base_vacuum_end_wall" default="false"/>
 
 
   <xacro:include filename="$(find irb2600_description)/urdf/irb2600_macro.xacro"/>
@@ -19,6 +18,10 @@
   <link name="world"/>
 
   <xacro:abb_irb2600_gazebo prefix=""/>
+
+  <xacro:include filename="$(find irb2600_description)/urdf/robot_base.xacro"/>
+  <xacro:include filename="$(find irb2600_description)/urdf/wall.xacro"/>
+  <xacro:include filename="$(find irb2600_description)/urdf/table.xacro"/>
 
   <!-- table -->
   <xacro:if value="$(arg table)">
@@ -32,7 +35,6 @@
 
   <!-- robot vacuum gripper -->
   <xacro:if value="$(arg vacuum_end)">
-    <xacro:include filename="$(find irb2600_description)/urdf/fixed_world.xacro"/>
     <xacro:include filename="$(find irb2600_description)/urdf/vacuum_end.xacro"/>
   </xacro:if>
 
@@ -44,19 +46,11 @@
 
   <!-- camera -->
   <xacro:if value="$(arg camera)">
-    <xacro:include filename="$(find irb2600_description)/urdf/fixed_world.xacro"/>
     <xacro:include filename="$(find irb2600_description)/urdf/camera.xacro"/>
-  </xacro:if>
-
-  <!-- gripper -->
-  <xacro:if value="$(arg gripper_2f)">
-    <xacro:include filename="$(find irb2600_description)/urdf/fixed_world.xacro"/>
-    <xacro:include filename="$(find irb2600_description)/urdf/gazebo_2f.xacro"/>
   </xacro:if>
 
    <!-- camera arm-->
   <xacro:if value="$(arg camera_arm)">
-    <xacro:include filename="$(find irb2600_description)/urdf/fixed_world.xacro"/>
     <xacro:include filename="$(find irb2600_description)/urdf/camera_arm.xacro"/>
   </xacro:if>
 
