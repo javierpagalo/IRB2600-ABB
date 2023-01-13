@@ -5,7 +5,7 @@
   <xacro:arg name="table" default="false"/>
   <xacro:arg name="camera_arm" default="false"/>
   <xacro:arg name="robot_base" default="false"/>
-  <xacro:arg name="vacuum_end" default="false"/>
+  <xacro:arg name="vacuum_end" default="true"/>
   <xacro:arg name="base_vacuum_end" default="false"/>
   <xacro:arg name="base_vacuum_end_wall" default="false"/>
 
