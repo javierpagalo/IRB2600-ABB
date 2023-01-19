@@ -1,36 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <robot name="abb_irb2600_model" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:arg name="camera" default="false"/>
+  
   <xacro:arg name="table" default="false"/>
-  <xacro:arg name="camera_arm" default="false"/>
-  <xacro:arg name="robot_base" default="false"/>
-  <xacro:arg name="vacuum_end" default="true"/>
+  <xacro:arg name="camera_d435" default="false"/>
+  <xacro:arg name="camera_l515" default="false"/>
+  <xacro:arg name="vacuum_end" default="false"/>
   <xacro:arg name="base_vacuum_end" default="false"/>
   <xacro:arg name="base_vacuum_end_wall" default="false"/>
-
-
-  <xacro:include filename="$(find irb2600_description)/urdf/irb2600_macro.xacro"/>
-  <xacro:include filename="$(find irb2600_description)/urdf/gazebo.xacro"/>
   
-  <xacro:abb_irb2600 prefix=""/>
-
   <link name="world"/>
 
+  <!-- Robot base 6 joints -->
+  <xacro:include filename="$(find irb2600_description)/urdf/irb2600_macro.xacro"/>
+
+  <xacro:include filename="$(find irb2600_description)/urdf/gazebo.xacro"/>
+
+  <xacro:abb_irb2600 prefix=""/>
   <xacro:abb_irb2600_gazebo prefix=""/>
 
+  <!-- Robot base support -->
   <xacro:include filename="$(find irb2600_description)/urdf/robot_base.xacro"/>
+
+  <!-- walls around robot -->
   <xacro:include filename="$(find irb2600_description)/urdf/wall.xacro"/>
-  <xacro:include filename="$(find irb2600_description)/urdf/table.xacro"/>
 
   <!-- table -->
   <xacro:if value="$(arg table)">
     <xacro:include filename="$(find irb2600_description)/urdf/table.xacro"/>
-  </xacro:if>
-
-  <!-- robot lab base -->
-  <xacro:if value="$(arg robot_base)">
-    <xacro:include filename="$(find irb2600_description)/urdf/robot_base.xacro"/>
   </xacro:if>
 
   <!-- robot vacuum gripper -->
@@ -38,28 +35,14 @@
     <xacro:include filename="$(find irb2600_description)/urdf/vacuum_end.xacro"/>
   </xacro:if>
 
-  <!-- robot lab vacuum gripper -->
-  <xacro:if value="$(arg base_vacuum_end)">
-    <xacro:include filename="$(find irb2600_description)/urdf/robot_base.xacro"/>
-    <xacro:include filename="$(find irb2600_description)/urdf/vacuum_end.xacro"/>
+  <!-- camera_d435 -->
+  <xacro:if value="$(arg camera_d435)">
+    <xacro:include filename="$(find irb2600_description)/urdf/camera_d435.xacro"/>
   </xacro:if>
 
-  <!-- camera -->
-  <xacro:if value="$(arg camera)">
-    <xacro:include filename="$(find irb2600_description)/urdf/camera.xacro"/>
-  </xacro:if>
-
-   <!-- camera arm-->
-  <xacro:if value="$(arg camera_arm)">
-    <xacro:include filename="$(find irb2600_description)/urdf/camera_arm.xacro"/>
-  </xacro:if>
-
-  <!-- robot lab vacuum gripper and wall -->
-  <xacro:if value="$(arg base_vacuum_end_wall)">
-    <xacro:include filename="$(find irb2600_description)/urdf/robot_base.xacro"/>
-    <xacro:include filename="$(find irb2600_description)/urdf/vacuum_end.xacro"/>
-    <xacro:include filename="$(find irb2600_description)/urdf/wall.xacro"/>
-    <xacro:include filename="$(find irb2600_description)/urdf/table.xacro"/>
+   <!-- camera_l515-->
+  <xacro:if value="$(arg camera_l515)">
+    <xacro:include filename="$(find irb2600_description)/urdf/camera_l515.xacro"/>
   </xacro:if>
 
 </robot>
