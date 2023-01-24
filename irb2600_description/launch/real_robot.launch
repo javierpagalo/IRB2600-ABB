@@ -6,10 +6,8 @@
     <arg name="J23_coupled" default="false" doc="If true, compensate for J2-J3 parallel linkage" />
 
     <arg name="robot" default="false" />
-    <arg name="table" default="false" />
-    <arg name="gripper_2f" default="false" />
-	<arg name="gripper_3f" default="false" />
-	<arg name="camera" default="false" />
+    <arg name="cable" default="false" />
+    <arg name="vaccum" default="false" />
 
     <!-- <group ns="irb120"> -->
 
@@ -28,9 +26,9 @@
     
     <include if="$(arg robot)" file="$(find irb2600_description)/launch/real_irb2600_moveit.launch" />
 
-    <include if="$(arg gripper_2f)" file="$(find irb2600_description)/launch/real_irb120_2fgripper_moveit.launch" />
+    <include if="$(arg vaccum)" file="$(find irb2600_description)/launch/real_irb120_vaccum_moveit.launch" />
 
-    <include if="$(arg table)" file="$(find irb2600_description)/launch/real_irb120_table_moveit.launch" />   
+    <include if="$(arg cable)" file="$(find irb2600_description)/launch/real_irb120_cable_moveit.launch" />   
 
     <!-- </group> -->
 
