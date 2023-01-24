@@ -21,33 +21,33 @@
     </inertial>
     <visual>
       <origin
-        xyz="0 0 0"
-        rpy="1.570796327 0 0.523598" />
+        xyz="0.025 -0.06 -0.045"
+        rpy="1.570796327 0 -1.570796327" />
       <geometry>
         <mesh
-          filename="package://irb2600_description/meshes/supports/camera_support.stl" />
+          filename="package://irb2600_description/meshes/supports/cameral515.stl" />
       </geometry>
       <material name="green"/>
     </visual>
     <collision>
       <origin
         xyz="0 0 0"
-        rpy="1.570796327 0 0.523598" /> 
+        rpy="1.570796327 0 -1.570796327" /> 
       <geometry>
         <mesh
-          filename="package://irb2600_description/meshes/supports/camera_support.stl" />
+          filename="package://irb2600_description/meshes/supports/cameral515.stl" />
       </geometry>
     </collision>
   </link>
 
-  <link name="camera_link">
+  <!--<link name="camera_link">
     <visual>
       <origin
         xyz="-0.023 -0.045 -0.0125"
         rpy="1.570796327 0 1.570796327" />
       <geometry>
         <mesh
-          filename="package://irb2600_description/meshes/camera.stl" />
+          filename="package://irb2600_description/meshes/cameral515_sim.stl"/>
       </geometry>
     <material name="metal_grey"/>
     </visual>
@@ -57,7 +57,7 @@
         rpy="1.570796327 0 1.570796327" /> 
       <geometry>
         <mesh
-          filename="package://irb2600_description/meshes/camera.stl" />
+          filename="package://irb2600_description/meshes/cameral515_sim.stl" />
       </geometry>
     </collision>
     <inertial>
@@ -65,7 +65,7 @@
         <origin xyz="0 0 0" rpy="0 0 0"/>
         <inertia ixx="0.0000001" ixy="0" ixz="0" iyy="0.0000001" iyz="0" izz="0.0000001" />
     </inertial>
-  </link>
+  </link>-->
 
   <joint name="irb2600_joint_camera_support" type="fixed">
     <parent link="tool0"/>
@@ -73,15 +73,15 @@
     <origin rpy="0 0 -1.570796" xyz="0 0 0.008"/>
   </joint>
 
-  <joint name="camera_joint" type="fixed">
+  <!--<joint name="camera_joint" type="fixed">
       <origin xyz="0 -0.06 0.095" rpy="0 -1.570796327 1.570796327"/>
       <parent link="camera_support_link"/>
       <child link="camera_link"/>
-  </joint>
+  </joint>-->
 
   <joint name="camera_optical_joint" type="fixed">
     <origin rpy="-1.5708 0 -1.5708" xyz="0 0 0"/>
-    <parent link="camera_link"/>
+    <parent link="camera_support_link"/>
     <child link="camera_frame_optical"/>
   </joint>
   <link name="camera_frame_optical"/>
