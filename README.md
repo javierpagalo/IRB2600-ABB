@@ -27,7 +27,10 @@ There are a number of dependencies in this package, since the ABB robot is opera
 The following packages are also neccesary but you must install it by cloning from the github repository and building your workspace.
 
 * ros-melodic-abb
-* ros-kinetic-abb-driver
+* ros-noetic-abb-driver
+
+instalar tambien desde github 
+https://github.com/ros-industrial/abb.git
 
 Now, Extract the metapackage `IRB2600-ABB` into `${ros_workspace}/src`. `catkin_make` your workspace.
 
@@ -90,4 +93,11 @@ Setup the Robot and turn on.
    ```
    rosrun irb2600_master real_irb2600_jtc.py 0 0 0 0 0 0 
    ```
+
+
+este para correr sin gazebo
+
+   roslaunch irb2600_description real_robot.launch robot:=true
+
+
 
