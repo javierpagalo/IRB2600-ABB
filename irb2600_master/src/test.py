@@ -16,7 +16,7 @@ from spatialmath import SE3, SO3
 
 # Altura del lapiz
 global pen 
-pen = 1 
+pen = .5
 
 global quit
 quit = 0
@@ -32,11 +32,11 @@ t = 0.0005
 
 #Altura máxima a la que llegará cada letra en Y
 global y_h 
-y_h = 1.6
+y_h = .5
 
 #Tamaño de cada letra en ancho y alto
 global size
-size = .1
+size = .2
 
 #Espacio entre cada letra
 global space
@@ -96,8 +96,8 @@ def move_pen(wpose, waypoints : list, d_x : float, d_y: float, d_z : float = 0):
     #Se copia la pose actual para únicamente modificar las coordenadas cartesianas y que la orientación
     #del efector final no se vea modificada, de esta manera mantenemos el lápiz perpendicular al suelo
 
-    wpose.position.y += d_x
-    wpose.position.x = (y_h if d_y == y_h else
+    wpose.position.x += d_x
+    wpose.position.y = (y_h if d_y == y_h else
                        (wpose.position.y + d_y))
     if (d_z != 0):
         wpose.position.z = d_z
@@ -108,8 +108,8 @@ def move_pen(wpose, waypoints : list, d_x : float, d_y: float, d_z : float = 0):
 
 def set_pen(wpose, waypoints : list, p_x : float, p_y: float, p_z : float = 0):
     
-    wpose.position.y = p_x
-    wpose.position.x = p_y
+    wpose.position.x = p_x
+    wpose.position.y = p_y
     wpose.position.z = p_z
     waypoints.append(copy.deepcopy(wpose))
 
@@ -433,57 +433,42 @@ home()
 group.stop()
 wpose = group.get_current_pose().pose
 
-while (not rospy.is_shutdown() and quit == 0):
+
+
+waypoints = []
+
+(wpose, waypoints) = set_pen(wpose, waypoints, 1.5,0,0.5)
+
+(wpose, waypoints) = move_pen(wpose, waypoints, -0.5,-0.5)
+
+(wpose, waypoints) = move_pen(wpose, waypoints, 0.5,0)
+
+(wpose, waypoints) = move_pen(wpose, waypoints, -0,1)
+
+(wpose, waypoints) = move_pen(wpose, waypoints, -0.5,0)
+
+(wpose, waypoints) = move_pen(wpose, waypoints, 0, 1)
     
-    waypoints = []
-    number = input("""
-          
-Choose a number to make de corresponding draw or write 'q' to close the program:
+rospy.sleep(1)
+# We want the Cartesian path to be interpolated at a resolution of 1 cm
+# which is why we will specify 0.01 as the eef_step in Cartesian
+# translation.  We will disable the jump threshold by setting it to 0.0,
+# ignoring the check for infeasible jumps in joint space, which is sufficient
+# for this tutorial.
+(plan, fraction) = group.compute_cartesian_path(waypoints, t, 0.0)  # jump_threshold
 
-    1. Square
-    2. Triangle
-    3. Circle
-    4. ESPOL (logo)
-    5. ESPOL
-    q. QUIT
-          
-Write the option: """)
-    
-    if number.upper() != "Q":
-        (waypoints, wpose, figure, figure_message) = (square    (wpose, waypoints) if number == "1" else
-                                                     (triangle  (wpose, waypoints) if number == "2" else
-                                                     (circle    (wpose, waypoints) if number == "3" else
-                                                     (espol_logo(wpose, waypoints) if number == "4" else 
-                                                     (espol     (wpose, waypoints) if number == "5" else (waypoints, wpose, "none", "_none")   )))))
-        
-        waypoints = (plane_rotation(waypoints) if theta != 0 else waypoints)
-        
-        print_plan(waypoints, figure)
-        data_writing_publisher.publish(figure_message + "_t" + str(theta) + "_h" + str(y_h*100).split('.')[0] + "_p" + str((pen - 0.17)*100).split('.')[0])
-        rospy.sleep(1)
-        # We want the Cartesian path to be interpolated at a resolution of 1 cm
-        # which is why we will specify 0.01 as the eef_step in Cartesian
-        # translation.  We will disable the jump threshold by setting it to 0.0,
-        # ignoring the check for infeasible jumps in joint space, which is sufficient
-        # for this tutorial.
-        (plan, fraction) = group.compute_cartesian_path(waypoints, t, 0.0)  # jump_threshold
+display_trajectory = moveit_msgs.msg.DisplayTrajectory()
+display_trajectory.trajectory_start = robot.get_current_state()
+display_trajectory.trajectory.append(plan)
+# Note: We are just planning, not asking move_group to actually move the robot yet:
 
-        display_trajectory = moveit_msgs.msg.DisplayTrajectory()
-        display_trajectory.trajectory_start = robot.get_current_state()
-        display_trajectory.trajectory.append(plan)
-        # Note: We are just planning, not asking move_group to actually move the robot yet:
+# Publish
+display_trajectory_publisher.publish(display_trajectory)
 
-        # Publish
-        display_trajectory_publisher.publish(display_trajectory)
-        
-        group.execute(plan, wait=True)
-        rospy.loginfo("Planning succesfully executed.\n")
-        home()
-        rospy.sleep(1)
-        data_writing_publisher.publish("_none")
+group.execute(plan, wait=True)
+rospy.loginfo("Planning succesfully executed.\n")
+home()
+rospy.sleep(1)
+data_writing_publisher.publish("_none")
 
-    else:
-        quit = 1
-        rospy.loginfo("Shutting down the program.\n")
-
-    rospy.sleep(1)
+rospy.sleep(1)
