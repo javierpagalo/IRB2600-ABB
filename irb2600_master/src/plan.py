@@ -16,7 +16,7 @@ from spatialmath import SE3, SO3
 
 # Altura del lapiz
 global pen 
-pen = 1 
+pen = 0.82
 
 global quit
 quit = 0
@@ -32,15 +32,15 @@ t = 0.0005
 
 #Altura máxima a la que llegará cada letra en Y
 global y_h 
-y_h = 1.6
+y_h = 1
 
 #Tamaño de cada letra en ancho y alto
 global size
-size = .1
+size = 0.05
 
 #Espacio entre cada letra
 global space
-space = .2
+space = 0.01
 
 def home():
     # We get the joint values from the group and change some of the values:
@@ -49,7 +49,7 @@ def home():
     joint_goal[1] = 0
     joint_goal[2] = 0
     joint_goal[3] = 0
-    joint_goal[4] = 0
+    joint_goal[4] = 1.57
     joint_goal[5] = 0
 
     # The go command can be called with joint values, poses, or without any
@@ -96,9 +96,9 @@ def move_pen(wpose, waypoints : list, d_x : float, d_y: float, d_z : float = 0):
     #Se copia la pose actual para únicamente modificar las coordenadas cartesianas y que la orientación
     #del efector final no se vea modificada, de esta manera mantenemos el lápiz perpendicular al suelo
 
-    wpose.position.y += d_x
+    wpose.position.y -= d_x
     wpose.position.x = (y_h if d_y == y_h else
-                       (wpose.position.y + d_y))
+                       (wpose.position.x + d_y))
     if (d_z != 0):
         wpose.position.z = d_z
 
@@ -108,7 +108,7 @@ def move_pen(wpose, waypoints : list, d_x : float, d_y: float, d_z : float = 0):
 
 def set_pen(wpose, waypoints : list, p_x : float, p_y: float, p_z : float = 0):
     
-    wpose.position.y = p_x
+    wpose.position.y = -p_x
     wpose.position.x = p_y
     wpose.position.z = p_z
     waypoints.append(copy.deepcopy(wpose))
@@ -150,20 +150,18 @@ def square(wpose, waypoints: list):
     return waypoints, wpose, figure, figure_message
 
 def triangle(wpose, waypoints: list):
-    h_t = 0.025
-    b_t = 0.05
-    figure = "Triangle (h = " + str(h_t) + " b = " + str(b_t) + ')'
+    figure = "Triangle Equilateral (side = " + str(size) + ')'
     figure_message = "_triangle"
 
     (wpose, waypoints) = set_pen(wpose, waypoints, 0, y_h, pen + 0.02)
 
     (wpose, waypoints) = down_pen(wpose, waypoints)
 
-    (wpose, waypoints) = move_pen(wpose, waypoints, -b_t/2, -h_t)
+    (wpose, waypoints) = move_pen(wpose, waypoints, -size*math.cos(60*math.pi/180), -size*math.sin(60*math.pi/180))
 
-    (wpose, waypoints) = move_pen(wpose, waypoints, b_t, 0)
+    (wpose, waypoints) = move_pen(wpose, waypoints, size, 0)
 
-    (wpose, waypoints) = move_pen(wpose, waypoints, -b_t/2, y_h)
+    (wpose, waypoints) = move_pen(wpose, waypoints, -size*math.cos(60*math.pi/180), y_h)
     
     (wpose, waypoints) = up_pen(wpose, waypoints)
         
