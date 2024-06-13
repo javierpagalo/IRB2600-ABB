@@ -6,6 +6,6 @@ moveit_setup_assistant_config:
   SRDF:
     relative_path: config/abb_irb2600_model.srdf
   CONFIG:
-    author_name: erick mendoza, Juan Saeteros
+    author_name: erick
     author_email: eridamen@espol.edu.ec
-    generated_timestamp: 1718206714
+    generated_timestamp: 1718249529
