@@ -15,7 +15,7 @@ import math
 
 # Altura del lapiz
 global pen 
-pen = 0.82
+pen = 0.97
 
 global quit
 quit = 0
@@ -28,7 +28,7 @@ t = 0.0008
 
 #Altura máxima a la que llegará cada letra en Y
 global y_h 
-y_h = 1
+y_h = 1.2
 
 #Tamaño de cada letra en ancho y alto
 global size

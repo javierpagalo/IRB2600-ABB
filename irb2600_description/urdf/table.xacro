@@ -15,9 +15,9 @@
 			<material name="coral3"/>
 		</visual>
 		<collision>
-			<origin rpy="0 0 0" xyz="0 2.0 0.405"/>
+			<origin rpy="0 0 0" xyz="0 1.20 0"/>
 			<geometry>
-			<box size="1.5 0.7 0.81"/>
+			<box size="1.3 0.7 0.82"/>
 			</geometry>
 			<material name="coral3"/>
 		</collision>

@@ -30,7 +30,7 @@ global fig
 fig = '_none'
 
 global pen
-pen = 0.82
+pen = 0.97
 
 global marker_array
 marker_array = MarkerArray()
@@ -40,14 +40,14 @@ marker = Marker()
 marker.header.frame_id = "base_link"
 marker.type = marker.POINTS
 marker.action = marker.ADD
-marker.scale.x = 0.005
-marker.scale.y = 0.005
+marker.scale.x = 0.008
+marker.scale.y = 0.008
 marker.scale.z = 0
 marker.color.r = 0.0
-marker.color.g = 1.0
+marker.color.g = 0.0
 marker.color.b = 0.0
 marker.color.a = 1.0
-marker.lifetime = rospy.Duration(10)
+marker.lifetime = rospy.Duration(50)
 
 #Recibimos del Subscriber un msg de tipo JointState de moveit y posteriormente lo publicamos con el Publisher como goal
 def state_position(goal_state: JointState):
@@ -74,6 +74,7 @@ def plan_marker():
     if (pose.pose.position.z <= pen + 0.005) and (pose.pose.position.z >= pen - 0.005):
         p = Point() 
         p = pose.pose.position
+        p.z = 0.25
         
         marker.points.append(p)
         marker_array.markers.append(marker)

@@ -4,6 +4,8 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Global Options1
+        - /Grid1
         - /MotionPlanning1/Scene Geometry1
         - /MotionPlanning1/Scene Robot1
         - /MotionPlanning1/Planning Request1
@@ -25,7 +27,7 @@ Toolbars:
 Visualization Manager:
   Class: ""
   Displays:
-    - Alpha: 0.5
+    - Alpha: 0.25
       Cell Size: 1
       Class: rviz/Grid
       Color: 160; 160; 164
@@ -84,6 +86,16 @@ Visualization Manager:
             Show Trail: false
             Value: true
           base_mesh:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          ee:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          end_effect_point:
             Alpha: 1
             Show Axes: false
             Show Trail: false
@@ -210,6 +222,16 @@ Visualization Manager:
             Show Axes: false
             Show Trail: false
             Value: true
+          ee:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
+          end_effect_point:
+            Alpha: 1
+            Show Axes: false
+            Show Trail: false
+            Value: true
           flange:
             Alpha: 1
             Show Axes: false
@@ -301,6 +323,16 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        ee:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
+        end_effect_point:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
+          Value: true
         flange:
           Alpha: 1
           Show Axes: false
@@ -383,12 +415,12 @@ Visualization Manager:
       Marker Topic: /visualization_marker_array
       Name: MarkerArray
       Namespaces:
-        {}
+        "": true
       Queue Size: 100
       Value: true
   Enabled: true
   Global Options:
-    Background Color: 48; 48; 48
+    Background Color: 255; 255; 255
     Default Light: true
     Fixed Frame: world
     Frame Rate: 30
@@ -402,7 +434,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 6.685188293457031
+      Distance: 3.257437229156494
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -410,17 +442,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.75
       Focal Point:
-        X: 0.8266502022743225
-        Y: -0.823914647102356
-        Z: 1.039107084274292
+        X: 0.6183197498321533
+        Y: -0.2682904005050659
+        Z: 0.6354615688323975
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.40479743480682373
+      Pitch: 0.9747968912124634
       Target Frame: world
-      Yaw: 1.0848954916000366
+      Yaw: 2.3848981857299805
     Saved: ~
 Window Geometry:
   Displays:

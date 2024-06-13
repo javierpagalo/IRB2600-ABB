@@ -27,7 +27,7 @@
         <joint name="joint_5" value="0"/>
         <joint name="joint_6" value="0"/>
     </group_state>
-    <group_state name="home_2" group="robot_arm">
+    <group_state name="home2" group="robot_arm">
         <joint name="joint_1" value="0"/>
         <joint name="joint_2" value="0"/>
         <joint name="joint_3" value="0"/>
@@ -36,7 +36,7 @@
         <joint name="joint_6" value="0"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="ee" parent_link="link_6" group="robot_arm" parent_group="robot_arm"/>
+    <end_effector name="ee" parent_link="link_6" group="ee_group"/>
     <!--VIRTUAL JOINT: Purpose: this element defines a virtual joint between a robot link and an external frame of reference (considered fixed with respect to the robot)-->
     <virtual_joint name="world" type="fixed" parent_frame="virtual_world" child_link="world"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
@@ -84,7 +84,6 @@
     <disable_collisions link1="link_3" link2="link_4" reason="Adjacent"/>
     <disable_collisions link1="link_3" link2="link_5" reason="Never"/>
     <disable_collisions link1="link_3" link2="link_6" reason="Never"/>
-    <disable_collisions link1="link_3" link2="table" reason="Never"/>
     <disable_collisions link1="link_3" link2="wall_back" reason="Never"/>
     <disable_collisions link1="link_3" link2="wall_left" reason="Never"/>
     <disable_collisions link1="link_3" link2="wall_right" reason="Never"/>
