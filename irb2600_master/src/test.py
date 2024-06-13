@@ -133,6 +133,7 @@ wpose = group.get_current_pose().pose
 waypoints = []
 
 (wpose, waypoints) = set_pen(wpose, waypoints, 0, y_h, pen)
+
 data_writing_publisher.publish("_" + str("test").lower() + "," + str(pen))
 rospy.sleep(1)
 
