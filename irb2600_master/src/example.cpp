@@ -56,8 +56,20 @@ int main(int argc, char **argv)
 
   geometry_msgs::Pose current_pose;
   current_pose = group.getCurrentPose().pose;
-  goalpos = current_pose;
+  // goalpos = current_pose;
 
+  // group.setPoseTarget(goalpos);
+
+
+  geometry_msgs::Pose goalpos;
+  
+  goalpos.position.x = 1.1;
+  goalpos.position.y = -0.0454133;
+  goalpos.position.z = 1.5; // this is z go down put 0
+  goalpos.orientation.w = 0;
+  goalpos.orientation.x = 0;
+  goalpos.orientation.y = 1;
+  goalpos.orientation.z = 0;
   group.setPoseTarget(goalpos);
 
   moveit::planning_interface::MoveGroupInterface::Plan my_plan;
