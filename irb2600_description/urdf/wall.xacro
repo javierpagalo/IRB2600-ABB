@@ -2,7 +2,7 @@
 <robot name="wall" xmlns:xacro="http://ros.org/wiki/xacro">
 
 	<material name="coral4">
-		<color rgba="${255/255} ${127/255} ${80/255} 1.0"/>
+		<color rgba="${0/255} ${0/255} ${0/255} 0.5"/>
 	</material>
 	<material name="transparent">
 		<color rgba="${255/255} ${255/255} ${255/255} 0.1"/>
