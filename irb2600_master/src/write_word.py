@@ -112,6 +112,7 @@ def set_pen(wpose, waypoints : list, p_x : float, p_y: float, p_z : float = 0):
 
     return (wpose, waypoints)
 
+
 def plan_A(wpose, waypoints : list):
 
     (wpose, waypoints) = move_pen(wpose, waypoints, 0, -size)
